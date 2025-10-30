@@ -1,14 +1,22 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <router-link to="/" class="logo">Portfolio</router-link>
+      <router-link to="/" class="logo">
+        <div>Guilherme</div>
+      </router-link>
       <div class="nav-links">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
+        <router-link to="/projects">Projects</router-link>
         <router-link to="/blog">Blog</router-link>
-        <button @click="toggleTheme" class="theme-toggle" aria-label="Toggle theme">
-          <span v-if="theme === 'dark'">☀️</span>
-          <span v-else>🌙</span>
+        <router-link to="/contact">Contact</router-link>
+        <button
+          @click="toggleTheme"
+          class="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          <Sun v-if="theme === 'dark'" :size="20" />
+          <Moon v-else :size="20" />
         </button>
       </div>
     </nav>
@@ -16,15 +24,18 @@
 </template>
 
 <script setup lang="ts">
-import { useTheme } from '../composables/useTheme'
+import { Sun, Moon } from "lucide-vue-next";
+import { useTheme } from "../composables/useTheme";
 
-const { theme, toggleTheme } = useTheme()
+const { theme, toggleTheme } = useTheme();
 </script>
 
 <style scoped lang="scss">
 .header {
   padding: 1.5rem 2rem;
-  background-color: var(--bg-secondary);
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -42,12 +53,12 @@ const { theme, toggleTheme } = useTheme()
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--accent);
+  color: var(--white);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 
   a {
@@ -56,7 +67,7 @@ const { theme, toggleTheme } = useTheme()
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -4px;
       left: 0;
@@ -84,17 +95,21 @@ const { theme, toggleTheme } = useTheme()
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
+  color: var(--text-primary);
 
   &:hover {
     transform: rotate(20deg);
     background-color: var(--accent);
+    color: var(--bg-primary);
   }
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .nav-links {

@@ -1,27 +1,51 @@
 // Color palette
 $black: #000000;
-$dark-blue: #14213d;
-$accent: #fca311;
-$light-gray: #e5e5e5;
 $white: #ffffff;
+$gray-subtle: #1a1a1a;
+$gray-light: #e5e5e5;
+$blue-primary: #3B82F6;
+
+// Blue scale
+$blue-50: #EFF6FF;
+$blue-100: #DBEAFE;
+$blue-200: #BFDBFE;
+$blue-300: #93C5FD;
+$blue-400: #60A5FA;
+$blue-500: #3B82F6;
+$blue-600: #2563EB;
+$blue-700: #1D4ED8;
+$blue-800: #1E40AF;
+$blue-900: #1E3A8A;
 
 // Theme colors (CSS variables set by theme composable)
 :root {
   // Dark mode (default)
   --bg-primary: #{$black};
-  --bg-secondary: #{$dark-blue};
-  --text-primary: #{$light-gray};
+  --bg-secondary: #{$gray-subtle};
+  --text-primary: #{$gray-light};
   --text-secondary: #{$white};
-  --accent: #{$accent};
+  --accent: #{$blue-primary};
+
+  // Blue scale
+  --blue-50: #{$blue-50};
+  --blue-100: #{$blue-100};
+  --blue-200: #{$blue-200};
+  --blue-300: #{$blue-300};
+  --blue-400: #{$blue-400};
+  --blue-500: #{$blue-500};
+  --blue-600: #{$blue-600};
+  --blue-700: #{$blue-700};
+  --blue-800: #{$blue-800};
+  --blue-900: #{$blue-900};
 
   // Transitions
   --transition-speed: 0.3s;
 }
 
-[data-theme='light'] {
+[data-theme="light"] {
   --bg-primary: #{$white};
-  --bg-secondary: #{$light-gray};
-  --text-primary: #{$dark-blue};
+  --bg-secondary: #{$blue-50};
+  --text-primary: #{$gray-subtle};
   --text-secondary: #{$black};
-  --accent: #{$accent};
+  --accent: #{$blue-primary};
 }

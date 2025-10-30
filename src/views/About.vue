@@ -34,7 +34,9 @@
         <h2>Contact</h2>
         <div class="contact-grid">
           <a v-for="contact in contacts" :key="contact.label" :href="contact.link" target="_blank" class="contact-card">
-            <span class="icon">{{ contact.icon }}</span>
+            <span class="icon">
+              <component :is="contact.icon" :size="32" />
+            </span>
             <span class="label">{{ contact.label }}</span>
           </a>
         </div>
@@ -45,6 +47,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Mail, Linkedin, Github, Twitter } from 'lucide-vue-next'
+import type { Component } from 'vue'
 
 const skills = ref([
   'JavaScript', 'TypeScript', 'Vue.js', 'React',
@@ -73,11 +77,11 @@ const workHistory = ref([
   }
 ])
 
-const contacts = ref([
-  { icon: '📧', label: 'Email', link: 'mailto:your.email@example.com' },
-  { icon: '💼', label: 'LinkedIn', link: 'https://linkedin.com/in/yourprofile' },
-  { icon: '🐙', label: 'GitHub', link: 'https://github.com/yourusername' },
-  { icon: '🐦', label: 'Twitter', link: 'https://twitter.com/yourhandle' }
+const contacts = ref<Array<{ icon: Component; label: string; link: string }>>([
+  { icon: Mail, label: 'Email', link: 'mailto:your.email@example.com' },
+  { icon: Linkedin, label: 'LinkedIn', link: 'https://linkedin.com/in/yourprofile' },
+  { icon: Github, label: 'GitHub', link: 'https://github.com/yourusername' },
+  { icon: Twitter, label: 'Twitter', link: 'https://twitter.com/yourhandle' }
 ])
 </script>
 
