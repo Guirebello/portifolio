@@ -1,0 +1,27 @@
+// Color palette
+$black: #000000;
+$dark-blue: #14213d;
+$accent: #fca311;
+$light-gray: #e5e5e5;
+$white: #ffffff;
+
+// Theme colors (CSS variables set by theme composable)
+:root {
+  // Dark mode (default)
+  --bg-primary: #{$black};
+  --bg-secondary: #{$dark-blue};
+  --text-primary: #{$light-gray};
+  --text-secondary: #{$white};
+  --accent: #{$accent};
+
+  // Transitions
+  --transition-speed: 0.3s;
+}
+
+[data-theme='light'] {
+  --bg-primary: #{$white};
+  --bg-secondary: #{$light-gray};
+  --text-primary: #{$dark-blue};
+  --text-secondary: #{$black};
+  --accent: #{$accent};
+}
