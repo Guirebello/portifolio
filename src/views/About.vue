@@ -78,23 +78,18 @@ const skills = ref([
 
 const workHistory = ref([
   {
-    title: "Senior Developer",
-    company: "Tech Company",
-    period: "2022 - Present",
+    title: "Software Developer Intern",
+    company: "Layers Education",
+    period: "03/2025 - Present",
     description:
-      "Leading frontend development and mentoring junior developers.",
+      "Contributing to the development and maintenance of web applications by implementing new features, improving performance, and resolving bugs across multiple projects.",
   },
   {
-    title: "Full Stack Developer",
-    company: "Startup Inc",
-    period: "2020 - 2022",
-    description: "Built scalable web applications using modern frameworks.",
-  },
-  {
-    title: "Junior Developer",
-    company: "Digital Agency",
-    period: "2018 - 2020",
-    description: "Developed client websites and internal tools.",
+    title: "Summer Intern",
+    company: "Layers Education",
+    period: "12/2024 - 02/2025",
+    description:
+      "Refactored and optimized the public documentation platform, enhancing structure, performance, and developer experience.",
   },
 ]);
 

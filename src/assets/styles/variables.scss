@@ -1,21 +1,22 @@
 // Color palette
 $black: #000000;
 $white: #ffffff;
+$almost-white: #fafafa;
 $gray-subtle: #1a1a1a;
 $gray-light: #e5e5e5;
-$blue-primary: #3B82F6;
+$blue-primary: #3b82f6;
 
 // Blue scale
-$blue-50: #EFF6FF;
-$blue-100: #DBEAFE;
-$blue-200: #BFDBFE;
-$blue-300: #93C5FD;
-$blue-400: #60A5FA;
-$blue-500: #3B82F6;
-$blue-600: #2563EB;
-$blue-700: #1D4ED8;
-$blue-800: #1E40AF;
-$blue-900: #1E3A8A;
+$blue-50: #eff6ff;
+$blue-100: #dbeafe;
+$blue-200: #bfdbfe;
+$blue-300: #93c5fd;
+$blue-400: #60a5fa;
+$blue-500: #3b82f6;
+$blue-600: #2563eb;
+$blue-700: #1d4ed8;
+$blue-800: #1e40af;
+$blue-900: #1e3a8a;
 
 // Theme colors (CSS variables set by theme composable)
 :root {
@@ -43,8 +44,8 @@ $blue-900: #1E3A8A;
 }
 
 [data-theme="light"] {
-  --bg-primary: #{$white};
-  --bg-secondary: #{$blue-50};
+  --bg-primary: #{$almost-white};
+  --bg-secondary: #{$blue-100};
   --text-primary: #{$gray-subtle};
   --text-secondary: #{$black};
   --accent: #{$blue-primary};

@@ -1,15 +1,18 @@
 <template>
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; {{ currentYear }} Developer Portfolio. Built with Vue 3 & Vite.</p>
+      <p>
+        &copy; {{ currentYear }} Guilherme Rebello Portfolio. Built with Vue 3 &
+        Vite.
+      </p>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
-const currentYear = computed(() => new Date().getFullYear())
+const currentYear = computed(() => new Date().getFullYear());
 </script>
 
 <style scoped lang="scss">
