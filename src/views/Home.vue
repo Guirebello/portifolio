@@ -1,28 +1,25 @@
 <template>
   <div class="home">
     <section class="hero">
-      <h1 class="hero-title">Guilherme Rebello</h1>
-      <p class="hero-subtitle">&lt;Software Engineer /&gt;</p>
+      <h1 class="hero-title">{{ $t('home.hero.name') }}</h1>
+      <p class="hero-subtitle">{{ $t('home.hero.title') }}</p>
       <div class="hero-actions">
-        <router-link to="/about" class="btn btn-primary">About Me</router-link>
-        <router-link to="/blog" class="btn btn-secondary">Read Blog</router-link>
+        <router-link to="/about" class="btn btn-primary">{{ $t('home.hero.aboutBtn') }}</router-link>
+        <router-link to="/blog" class="btn btn-secondary">{{ $t('home.hero.blogBtn') }}</router-link>
       </div>
     </section>
 
     <section class="intro">
       <div class="intro-content">
-        <h2>Welcome to my portfolio</h2>
-        <p>
-          I'm a developer focused on creating clean, efficient, and user-friendly applications.
-          Explore my work, learn about my experience, and check out my latest thoughts on the blog.
-        </p>
+        <h2>{{ $t('home.intro.title') }}</h2>
+        <p>{{ $t('home.intro.description') }}</p>
       </div>
     </section>
 
     <section class="projects-preview">
       <div class="section-header">
-        <h2>Featured Projects</h2>
-        <p>Check out some of my recent work</p>
+        <h2>{{ $t('home.projects.title') }}</h2>
+        <p>{{ $t('home.projects.subtitle') }}</p>
       </div>
       <div class="projects-grid">
         <router-link
@@ -33,21 +30,21 @@
         >
           <div class="project-image" :style="{ backgroundImage: `url(${project.image})` }"></div>
           <div class="project-content">
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
+            <h3>{{ $t(`projects.${project.slug}.title`) }}</h3>
+            <p>{{ $t(`projects.${project.slug}.description`) }}</p>
           </div>
         </router-link>
       </div>
       <div class="section-action">
-        <router-link to="/projects" class="btn btn-primary">View All Projects</router-link>
+        <router-link to="/projects" class="btn btn-primary">{{ $t('home.projects.viewAllBtn') }}</router-link>
       </div>
     </section>
 
     <section class="contact-cta">
       <div class="cta-content">
-        <h2>Let's Work Together</h2>
-        <p>Have a project in mind? Let's discuss how I can help bring your ideas to life.</p>
-        <router-link to="/contact" class="btn btn-primary">Contact Me</router-link>
+        <h2>{{ $t('home.cta.title') }}</h2>
+        <p>{{ $t('home.cta.description') }}</p>
+        <router-link to="/contact" class="btn btn-primary">{{ $t('home.cta.contactBtn') }}</router-link>
       </div>
     </section>
   </div>
@@ -58,28 +55,20 @@ import { ref } from 'vue'
 
 interface Project {
   slug: string
-  title: string
-  description: string
   image: string
 }
 
 const featuredProjects = ref<Project[]>([
   {
     slug: 'ecommerce-platform',
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with payment integration and admin dashboard',
     image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop'
   },
   {
     slug: 'task-manager-app',
-    title: 'Task Manager App',
-    description: 'Collaborative task management tool with real-time updates and team features',
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop'
   },
   {
     slug: 'weather-dashboard',
-    title: 'Weather Dashboard',
-    description: 'Interactive weather dashboard with forecasts, maps, and historical data',
     image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop'
   }
 ])

@@ -1,68 +1,68 @@
 <template>
   <div class="contact">
     <section class="contact-header">
-      <h1 class="contact-title">Get In Touch</h1>
+      <h1 class="contact-title">{{ $t('contact.title') }}</h1>
       <p class="contact-subtitle">
-        Let's discuss your next project or opportunity
+        {{ $t('contact.subtitle') }}
       </p>
     </section>
 
     <div class="contact-container">
       <section class="contact-form-section">
-        <h2>Send a Message</h2>
+        <h2>{{ $t('contact.form.title') }}</h2>
         <form @submit.prevent="handleSubmit" class="contact-form">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">{{ $t('contact.form.name') }}</label>
             <input
               id="name"
               v-model="formData.name"
               type="text"
-              placeholder="Your name"
+              :placeholder="$t('contact.form.namePlaceholder')"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email">{{ $t('contact.form.email') }}</label>
             <input
               id="email"
               v-model="formData.email"
               type="email"
-              placeholder="your.email@example.com"
+              :placeholder="$t('contact.form.emailPlaceholder')"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="message">Message</label>
+            <label for="message">{{ $t('contact.form.message') }}</label>
             <textarea
               id="message"
               v-model="formData.message"
-              placeholder="Tell me about your project or idea..."
+              :placeholder="$t('contact.form.messagePlaceholder')"
               rows="6"
               required
             ></textarea>
           </div>
 
           <button type="submit" class="btn-submit" :disabled="isSubmitting">
-            {{ isSubmitting ? "Sending..." : "Send Message" }}
+            {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.send') }}
           </button>
 
           <p v-if="submitStatus === 'success'" class="status-message success">
-            Message sent successfully! I'll get back to you soon.
+            {{ $t('contact.form.success') }}
           </p>
           <p v-if="submitStatus === 'error'" class="status-message error">
-            Failed to send message. Please try again or use email directly.
+            {{ $t('contact.form.error') }}
           </p>
         </form>
       </section>
 
       <section class="contact-cards-section">
-        <h2>Connect With Me</h2>
+        <h2>{{ $t('contact.connect.title') }}</h2>
         <div class="contact-cards">
           <a
             v-for="contact in contacts"
-            :key="contact.type"
+            :key="contact.typeKey"
             :href="contact.link"
             class="contact-card"
             target="_blank"
@@ -71,7 +71,7 @@
             <div class="contact-icon">
               <component :is="contact.icon" :size="40" />
             </div>
-            <h3>{{ contact.type }}</h3>
+            <h3>{{ $t(`contact.connect.${contact.typeKey}`) }}</h3>
             <p>{{ contact.value }}</p>
           </a>
         </div>
@@ -86,7 +86,7 @@ import { Mail, Linkedin, Github } from "lucide-vue-next";
 import type { Component } from "vue";
 
 interface Contact {
-  type: string;
+  typeKey: string;
   value: string;
   link: string;
   icon: Component;
@@ -94,19 +94,19 @@ interface Contact {
 
 const contacts = ref<Contact[]>([
   {
-    type: "Email",
+    typeKey: "email",
     value: "gui.rebello1@gmail.com",
     link: "mailto:gui.rebello1@gmail.com",
     icon: Mail,
   },
   {
-    type: "LinkedIn",
+    typeKey: "linkedin",
     value: "linkedin.com/in/guirebello",
     link: "https://linkedin.com/in/guirebello",
     icon: Linkedin,
   },
   {
-    type: "GitHub",
+    typeKey: "github",
     value: "github.com/Guirebello",
     link: "https://github.com/Guirebello",
     icon: Github,

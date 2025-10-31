@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme"
+  },
+  "footer": {
+    "copyright": "Guilherme Rebello Portfolio. Built with Vue 3 & Vite."
+  },
+  "home": {
+    "hero": {
+      "name": "Guilherme Rebello",
+      "title": "<Software Engineer />",
+      "aboutBtn": "About Me",
+      "blogBtn": "Read Blog"
+    },
+    "intro": {
+      "title": "Welcome to my portfolio",
+      "description": "I'm a developer focused on creating clean, efficient, and user-friendly applications. Explore my work, learn about my experience, and check out my latest thoughts on the blog."
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "subtitle": "Check out some of my recent work",
+      "viewAllBtn": "View All Projects"
+    },
+    "cta": {
+      "title": "Let's Work Together",
+      "description": "Have a project in mind? Let's discuss how I can help bring your ideas to life.",
+      "contactBtn": "Contact Me"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Developer | Problem Solver | Tech Enthusiast",
+    "skills": {
+      "title": "Skills",
+      "list": ["JavaScript", "TypeScript", "Vue.js", "Node.js", "Python", "Git", "Docker", "HTML/CSS", "REST APIs", "MongoDb", "Bash", "SQL", "CI/CD"]
+    },
+    "work": {
+      "title": "Work Trajectory",
+      "history": [
+        {
+          "title": "Software Developer Intern",
+          "company": "Layers Education",
+          "period": "03/2025 - Present",
+          "description": "Contributing to the development and maintenance of web applications by implementing new features, improving performance, and resolving bugs across multiple projects."
+        },
+        {
+          "title": "Summer Intern",
+          "company": "Layers Education",
+          "period": "12/2024 - 02/2025",
+          "description": "Refactored and optimized the public documentation platform, enhancing structure, performance, and developer experience."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Explore my work and side projects",
+    "ecommerce-platform": {
+      "title": "E-Commerce Platform",
+      "description": "Full-stack e-commerce solution with payment integration and admin dashboard",
+      "tech": ["Vue.js", "Node.js", "MongoDB", "Stripe"]
+    },
+    "task-manager-app": {
+      "title": "Task Manager App",
+      "description": "Collaborative task management tool with real-time updates and team features",
+      "tech": ["React", "Firebase", "Tailwind CSS"]
+    },
+    "weather-dashboard": {
+      "title": "Weather Dashboard",
+      "description": "Interactive weather dashboard with forecasts, maps, and historical data",
+      "tech": ["Vue.js", "D3.js", "OpenWeather API"]
+    },
+    "blog-platform": {
+      "title": "Blog Platform",
+      "description": "Markdown-based blog platform with CMS and SEO optimization",
+      "tech": ["Next.js", "Markdown", "PostgreSQL"]
+    },
+    "portfolio-builder": {
+      "title": "Portfolio Builder",
+      "description": "No-code portfolio builder with drag-and-drop interface and templates",
+      "tech": ["Vue.js", "Nuxt", "Supabase"]
+    },
+    "api-documentation-tool": {
+      "title": "API Documentation Tool",
+      "description": "Auto-generate interactive API documentation from OpenAPI specs",
+      "tech": ["TypeScript", "OpenAPI", "React"]
+    }
+  },
+  "projectDetail": {
+    "backToProjects": "← Back to Projects",
+    "viewGithub": "View on GitHub",
+    "liveDemo": "Live Demo",
+    "technologiesUsed": "Technologies Used",
+    "notFound": {
+      "title": "Project Not Found",
+      "description": "The project you're looking for doesn't exist.",
+      "backBtn": "Back to Projects"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts on development, technology, and more",
+    "readMore": "Read more →"
+  },
+  "blogPost": {
+    "backToBlog": "← Back to Blog",
+    "notFound": {
+      "title": "Post not found",
+      "backBtn": "Return to blog"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's discuss your next project or opportunity",
+    "form": {
+      "title": "Send a Message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project or idea...",
+      "sending": "Sending...",
+      "send": "Send Message",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try again or use email directly."
+    },
+    "connect": {
+      "title": "Connect With Me",
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "blog": "Blog",
+    "contact": "Contato",
+    "toggleTheme": "Alternar tema"
+  },
+  "footer": {
+    "copyright": "Portfólio Guilherme Rebello. Feito com Vue 3 & Vite."
+  },
+  "home": {
+    "hero": {
+      "name": "Guilherme Rebello",
+      "title": "<Engenheiro de Software />",
+      "aboutBtn": "Sobre Mim",
+      "blogBtn": "Ler Blog"
+    },
+    "intro": {
+      "title": "Bem-vindo ao meu portfólio",
+      "description": "Sou um desenvolvedor focado em criar aplicações limpas, eficientes e amigáveis ao usuário. Explore meu trabalho, aprenda sobre minha experiência e confira meus últimos pensamentos no blog."
+    },
+    "projects": {
+      "title": "Projetos em Destaque",
+      "subtitle": "Confira alguns dos meus trabalhos recentes",
+      "viewAllBtn": "Ver Todos os Projetos"
+    },
+    "cta": {
+      "title": "Vamos Trabalhar Juntos",
+      "description": "Tem um projeto em mente? Vamos discutir como posso ajudar a dar vida às suas ideias.",
+      "contactBtn": "Entre em Contato"
+    }
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Desenvolvedor | Solucionador de Problemas | Entusiasta de Tecnologia",
+    "skills": {
+      "title": "Habilidades",
+      "list": ["JavaScript", "TypeScript", "Vue.js", "Node.js", "Python", "Git", "Docker", "HTML/CSS", "REST APIs", "MongoDb", "Bash", "SQL", "CI/CD"]
+    },
+    "work": {
+      "title": "Trajetória Profissional",
+      "history": [
+        {
+          "title": "Estagiário de Desenvolvimento de Software",
+          "company": "Layers Education",
+          "period": "03/2025 - Presente",
+          "description": "Contribuindo para o desenvolvimento e manutenção de aplicações web implementando novas funcionalidades, melhorando performance e resolvendo bugs em múltiplos projetos."
+        },
+        {
+          "title": "Estagiário de Verão",
+          "company": "Layers Education",
+          "period": "12/2024 - 02/2025",
+          "description": "Refatorei e otimizei a plataforma de documentação pública, melhorando estrutura, performance e experiência do desenvolvedor."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contato",
+      "email": "E-mail",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "projects": {
+    "title": "Meus Projetos",
+    "subtitle": "Explore meu trabalho e projetos paralelos",
+    "ecommerce-platform": {
+      "title": "Plataforma de E-Commerce",
+      "description": "Solução completa de e-commerce com integração de pagamento e painel administrativo",
+      "tech": ["Vue.js", "Node.js", "MongoDB", "Stripe"]
+    },
+    "task-manager-app": {
+      "title": "App Gerenciador de Tarefas",
+      "description": "Ferramenta colaborativa de gerenciamento de tarefas com atualizações em tempo real e recursos de equipe",
+      "tech": ["React", "Firebase", "Tailwind CSS"]
+    },
+    "weather-dashboard": {
+      "title": "Painel do Tempo",
+      "description": "Painel interativo do tempo com previsões, mapas e dados históricos",
+      "tech": ["Vue.js", "D3.js", "OpenWeather API"]
+    },
+    "blog-platform": {
+      "title": "Plataforma de Blog",
+      "description": "Plataforma de blog baseada em Markdown com CMS e otimização SEO",
+      "tech": ["Next.js", "Markdown", "PostgreSQL"]
+    },
+    "portfolio-builder": {
+      "title": "Construtor de Portfólio",
+      "description": "Construtor de portfólio sem código com interface arrastar e soltar e modelos",
+      "tech": ["Vue.js", "Nuxt", "Supabase"]
+    },
+    "api-documentation-tool": {
+      "title": "Ferramenta de Documentação de API",
+      "description": "Gere automaticamente documentação interativa de API a partir de especificações OpenAPI",
+      "tech": ["TypeScript", "OpenAPI", "React"]
+    }
+  },
+  "projectDetail": {
+    "backToProjects": "← Voltar aos Projetos",
+    "viewGithub": "Ver no GitHub",
+    "liveDemo": "Demo ao Vivo",
+    "technologiesUsed": "Tecnologias Utilizadas",
+    "notFound": {
+      "title": "Projeto Não Encontrado",
+      "description": "O projeto que você procura não existe.",
+      "backBtn": "Voltar aos Projetos"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Reflexões sobre desenvolvimento, tecnologia e mais",
+    "readMore": "Leia mais →"
+  },
+  "blogPost": {
+    "backToBlog": "← Voltar ao Blog",
+    "notFound": {
+      "title": "Post não encontrado",
+      "backBtn": "Retornar ao blog"
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Vamos discutir seu próximo projeto ou oportunidade",
+    "form": {
+      "title": "Envie uma Mensagem",
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "email": "E-mail",
+      "emailPlaceholder": "seu.email@exemplo.com",
+      "message": "Mensagem",
+      "messagePlaceholder": "Conte-me sobre seu projeto ou ideia...",
+      "sending": "Enviando...",
+      "send": "Enviar Mensagem",
+      "success": "Mensagem enviada com sucesso! Retornarei em breve.",
+      "error": "Falha ao enviar mensagem. Tente novamente ou use o e-mail diretamente."
+    },
+    "connect": {
+      "title": "Conecte-se Comigo",
+      "email": "E-mail",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,8 +1,8 @@
 <template>
   <div class="blog">
     <section class="blog-header">
-      <h1>Blog</h1>
-      <p>Thoughts on development, technology, and more</p>
+      <h1>{{ $t('blog.title') }}</h1>
+      <p>{{ $t('blog.subtitle') }}</p>
     </section>
 
     <div class="blog-content">
@@ -14,7 +14,7 @@
               <time>{{ post.date }}</time>
             </div>
             <p class="post-description">{{ post.description }}</p>
-            <span class="read-more">Read more →</span>
+            <span class="read-more">{{ $t('blog.readMore') }}</span>
           </router-link>
         </article>
       </div>
@@ -23,7 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface Post {
   slug: string
@@ -32,20 +33,57 @@ interface Post {
   description: string
 }
 
-const posts = ref<Post[]>([
-  {
-    slug: 'welcome',
-    title: 'Welcome to My Blog',
-    date: '2024-01-15',
-    description: 'First post introducing the blog and what to expect.'
-  },
-  {
-    slug: 'building-with-vue',
-    title: 'Building Modern Apps with Vue 3',
-    date: '2024-02-01',
-    description: 'Exploring the power and simplicity of Vue 3 Composition API.'
+const { locale } = useI18n()
+const posts = ref<Post[]>([])
+
+function parseFrontmatter(content: string) {
+  const frontmatterRegex = /^---\n([\s\S]*?)\n---/
+  const match = content.match(frontmatterRegex)
+
+  if (!match) return null
+
+  const frontmatterText = match[1]
+  const metadata: Record<string, string> = {}
+  frontmatterText.split('\n').forEach(line => {
+    const [key, ...valueParts] = line.split(':')
+    if (key && valueParts.length) {
+      metadata[key.trim()] = valueParts.join(':').trim()
+    }
+  })
+
+  return metadata
+}
+
+async function loadPosts() {
+  const modules = import.meta.glob('../content/blog/**/*.md', { eager: true, as: 'raw' })
+  const loadedPosts: Post[] = []
+
+  for (const path in modules) {
+    if (path.includes(`/${locale.value}/`)) {
+      const content = modules[path] as string
+      const metadata = parseFrontmatter(content)
+
+      if (metadata) {
+        const slug = path.split('/').pop()?.replace('.md', '') || ''
+        loadedPosts.push({
+          slug,
+          title: metadata.title,
+          date: metadata.date,
+          description: metadata.description
+        })
+      }
+    }
   }
-])
+
+  // Sort by date descending
+  posts.value = loadedPosts.sort((a, b) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+}
+
+onMounted(() => {
+  loadPosts()
+})
 </script>
 
 <style scoped lang="scss">

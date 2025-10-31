@@ -5,15 +5,22 @@
         <div>Guilherme</div>
       </router-link>
       <div class="nav-links">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/projects">Projects</router-link>
-        <router-link to="/blog">Blog</router-link>
-        <router-link to="/contact">Contact</router-link>
+        <router-link to="/">{{ $t('nav.home') }}</router-link>
+        <router-link to="/about">{{ $t('nav.about') }}</router-link>
+        <router-link to="/projects">{{ $t('nav.projects') }}</router-link>
+        <router-link to="/blog">{{ $t('nav.blog') }}</router-link>
+        <router-link to="/contact">{{ $t('nav.contact') }}</router-link>
+        <button
+          @click="toggleLanguage"
+          class="language-toggle"
+          :aria-label="currentLocale === 'en' ? 'Switch to Portuguese' : 'Mudar para Inglês'"
+        >
+          {{ currentLocale === 'en' ? 'EN' : 'PT' }}
+        </button>
         <button
           @click="toggleTheme"
           class="theme-toggle"
-          aria-label="Toggle theme"
+          :aria-label="$t('nav.toggleTheme')"
         >
           <Sun v-if="theme === 'dark'" :size="20" />
           <Moon v-else :size="20" />
@@ -24,10 +31,20 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Sun, Moon } from "lucide-vue-next";
 import { useTheme } from "../composables/useTheme";
+import { useI18n } from 'vue-i18n'
 
 const { theme, toggleTheme } = useTheme();
+const { locale } = useI18n()
+
+const currentLocale = computed(() => locale.value)
+
+function toggleLanguage() {
+  locale.value = locale.value === 'en' ? 'pt-BR' : 'en'
+  localStorage.setItem('locale', locale.value)
+}
 </script>
 
 <style scoped lang="scss">
@@ -81,6 +98,25 @@ const { theme, toggleTheme } = useTheme();
     &.router-link-active::after {
       width: 100%;
     }
+  }
+}
+
+.language-toggle {
+  background: none;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition:
+    transform var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
+  color: var(--text-primary);
+
+  &:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
   }
 }
 

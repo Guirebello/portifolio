@@ -2,8 +2,7 @@
   <footer class="footer">
     <div class="footer-content">
       <p>
-        &copy; {{ currentYear }} Guilherme Rebello Portfolio. Built with Vue 3 &
-        Vite.
+        &copy; {{ currentYear }} {{ $t('footer.copyright') }}
       </p>
     </div>
   </footer>

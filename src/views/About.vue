@@ -1,13 +1,13 @@
 <template>
   <div class="about">
     <section class="about-header">
-      <h1>About Me</h1>
-      <p>Developer | Problem Solver | Tech Enthusiast</p>
+      <h1>{{ $t('about.title') }}</h1>
+      <p>{{ $t('about.subtitle') }}</p>
     </section>
 
     <div class="about-content">
       <section class="section skills">
-        <h2>Skills</h2>
+        <h2>{{ $t('about.skills.title') }}</h2>
         <div class="skills-grid">
           <div class="skill-card" v-for="skill in skills" :key="skill">
             <span>{{ skill }}</span>
@@ -16,7 +16,7 @@
       </section>
 
       <section class="section trajectory">
-        <h2>Work Trajectory</h2>
+        <h2>{{ $t('about.work.title') }}</h2>
         <div class="timeline">
           <div
             class="timeline-item"
@@ -35,11 +35,11 @@
       </section>
 
       <section class="section contact">
-        <h2>Contact</h2>
+        <h2>{{ $t('about.contact.title') }}</h2>
         <div class="contact-grid">
           <a
             v-for="contact in contacts"
-            :key="contact.label"
+            :key="contact.type"
             :href="contact.link"
             target="_blank"
             class="contact-card"
@@ -47,7 +47,7 @@
             <span class="icon">
               <component :is="contact.icon" :size="32" />
             </span>
-            <span class="label">{{ contact.label }}</span>
+            <span class="label">{{ $t(`about.contact.${contact.type}`) }}</span>
           </a>
         </div>
       </section>
@@ -56,52 +56,31 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
 import { Mail, Linkedin, Github } from "lucide-vue-next";
+import { useI18n } from 'vue-i18n'
 import type { Component } from "vue";
 
-const skills = ref([
-  "JavaScript",
-  "TypeScript",
-  "Vue.js",
-  "Node.js",
-  "Python",
-  "Git",
-  "Docker",
-  "HTML/CSS",
-  "REST APIs",
-  "MongoDb",
-  "Bash",
-  "SQL",
-  "CI/CD",
-]);
+const { tm } = useI18n()
 
-const workHistory = ref([
-  {
-    title: "Software Developer Intern",
-    company: "Layers Education",
-    period: "03/2025 - Present",
-    description:
-      "Contributing to the development and maintenance of web applications by implementing new features, improving performance, and resolving bugs across multiple projects.",
-  },
-  {
-    title: "Summer Intern",
-    company: "Layers Education",
-    period: "12/2024 - 02/2025",
-    description:
-      "Refactored and optimized the public documentation platform, enhancing structure, performance, and developer experience.",
-  },
-]);
+const skills = computed(() => tm('about.skills.list') as string[])
 
-const contacts = ref<Array<{ icon: Component; label: string; link: string }>>([
-  { icon: Mail, label: "Email", link: "mailto:gui.rebello1@gmail.com" },
+const workHistory = computed(() => tm('about.work.history') as Array<{
+  title: string
+  company: string
+  period: string
+  description: string
+}>)
+
+const contacts = computed<Array<{ icon: Component; type: string; link: string }>>(() => [
+  { icon: Mail, type: "email", link: "mailto:gui.rebello1@gmail.com" },
   {
     icon: Linkedin,
-    label: "LinkedIn",
+    type: "linkedin",
     link: "https://linkedin.com/in/guirebello",
   },
-  { icon: Github, label: "GitHub", link: "https://github.com/Guirebello" },
-]);
+  { icon: Github, type: "github", link: "https://github.com/Guirebello" },
+])
 </script>
 
 <style scoped lang="scss">

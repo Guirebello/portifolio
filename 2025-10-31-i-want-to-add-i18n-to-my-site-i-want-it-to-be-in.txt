@@ -1,0 +1,137 @@
+
+ ▐▛███▜▌   Claude Code v2.0.29
+▝▜█████▛▘  Sonnet 4.5 · Claude Pro
+  ▘▘ ▝▝    /home/guilherme/projects/my-portifolio
+
+> I want to add i18n to my site. I want it to be in english and Brazilian portuguese 
+  ⎿  Interrupted · What should Claude do instead?
+
+> I want to add i18n to my site. I want it to be in english and Brazilian portuguese 
+
+● I'll research your codebase to understand the current structure and plan the i18n implementation for English and Brazilian
+  Portuguese.
+
+● Plan(Analyze codebase for i18n)
+  ⎿  Done (15 tool uses · 31.9k tokens · 24.4s)                                                                              
+● User answered Claude's questions:                                                                       
+  ⎿  · Should the locale be reflected in the URL path (e.g., /en/about, /pt-br/about)? → LocalStorage only
+     · How should blog posts and project content be structured? → Separate .md files
+     · What should be the default/fallback locale behavior? → Auto-detect browser
+     · Where should the language switcher be placed? → Header (next to theme)
+  ⎿  User rejected Claude's plan:
+     ╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+     │ i18n Implementation Plan                                                                                            │
+     │                                                                                                                     │
+     │ Setup (vue-i18n)                                                                                                    │
+     │                                                                                                                     │
+     │ 1. Install vue-i18n package                                                                                         │
+     │ 2. Create src/i18n/index.ts - configure i18n plugin with auto-detect locale (pt-BR or en), localStorage persistence │
+     │ 3. Register plugin in src/main.ts                                                                                   │
+     │                                                                                                                     │
+     │ Translation Files Structure                                                                                         │
+     │                                                                                                                     │
+     │ 4. Create src/locales/en.json - English UI labels (nav, buttons, form labels, page titles, etc.)                    │
+     │ 5. Create src/locales/pt-BR.json - Brazilian Portuguese UI labels                                                   │
+     │                                                                                                                     │
+     │ Blog Posts (Markdown Files)                                                                                         │
+     │                                                                                                                     │
+     │ 6. Create src/content/blog/en/ directory                                                                            │
+     │ 7. Create src/content/blog/pt-BR/ directory                                                                         │
+     │ 8. Extract current blog posts to separate .md files per locale                                                      │
+     │ 9. Update BlogPost.vue - load markdown from filesystem based on locale + slug                                       │
+     │ 10. Update Blog.vue - list posts from current locale                                                                │
+     │                                                                                                                     │
+     │ Projects Content                                                                                                    │
+     │                                                                                                                     │
+     │ 11. Create src/content/projects/en/ directory                                                                       │
+     │ 12. Create src/content/projects/pt-BR/ directory                                                                    │
+     │ 13. Extract project content to .md files per locale                                                                 │
+     │ 14. Update Projects.vue, ProjectDetail.vue, Home.vue - load from files                                              │
+     │                                                                                                                     │
+     │ Components                                                                                                          │
+     │                                                                                                                     │
+     │ 15. Add language switcher to Header.vue (next to theme toggle)                                                      │
+     │ 16. Update Header.vue - translate nav links                                                                         │
+     │ 17. Update Footer.vue - translate copyright                                                                         │
+     │ 18. Update Home.vue - use i18n for all text                                                                         │
+     │ 19. Update About.vue - translate skills, work history, labels                                                       │
+     │ 20. Update Contact.vue - translate form labels, messages                                                            │
+     │ 21. Update all view components to use $t() for translations                                                         │
+     │                                                                                                                     │
+     │ TypeScript                                                                                                          │
+     │                                                                                                                     │
+     │ 22. Add i18n types/declarations if needed                                                                           │
+     │ 23. Update component props/interfaces for typed translations                                                        │
+     │                                                                                                                     │
+     │ ---                                                                                                                 │
+     │ Unresolved:                                                                                                         │
+     │ - Keep project metadata (title, description, tech array) in JSON or extract to frontmatter in .md files?            │
+     │ - Vite config changes needed for markdown file imports?                                                             │
+     ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+> Can you please say more about the unresolved questions? 
+
+● Unresolved Questions - Details
+
+  1. Project metadata storage strategy
+
+  Current state: Projects have structured data (title, description, technologies array, URLs) hardcoded in component data
+  objects.
+
+  Options:
+
+  A) Keep in JSON translation files (src/locales/en.json, pt-BR.json)
+  - Pros: Centralized with other UI translations, simple to access via $t('projects.projectSlug.title')
+  - Cons: Large JSON files, mixing UI labels with content data
+
+  B) Extract to markdown frontmatter (e.g., src/content/projects/en/project-slug.md)
+  ---
+  title: Project Title
+  description: Short description
+  technologies: [Vue, TypeScript, Vite]
+  githubUrl: https://...
+  liveUrl: https://...
+  ---
+  # Detailed markdown content here
+  - Pros: Content co-located with descriptions, easier to maintain, cleaner separation
+  - Cons: Need filesystem loader, parse frontmatter on each load
+
+  C) Separate JSON + Markdown
+  - Metadata in src/content/projects/metadata.json (with locale keys)
+  - Long-form content in .md files
+  - Pros: Fast metadata access, markdown for rich content
+  - Cons: Data split across files
+
+  Recommendation needed: Which approach fits your workflow best?
+
+  ---
+  2. Vite config for markdown imports
+
+  Issue: Vite doesn't natively import .md files as modules. Need to handle:
+  - Dynamic imports of markdown files at runtime
+  - Parsing frontmatter from markdown strings
+  - TypeScript types for imported markdown
+
+  Options:
+
+  A) Use ?raw suffix - Import as raw strings
+  const content = await import(`../content/blog/${locale}/${slug}.md?raw`)
+  - Pros: Built-in Vite feature, no plugins
+  - Cons: Manual frontmatter parsing needed
+
+  B) Add vite plugin (vite-plugin-md or @mdit-vue/plugin-component)
+  - Pros: Auto-parse frontmatter, compile to Vue components
+  - Cons: Extra dependency, config complexity
+
+  C) Fetch at runtime - Use fetch() to load from /public/content/
+  const response = await fetch(`/content/blog/${locale}/${slug}.md`)
+  - Pros: No build config needed, truly dynamic
+  - Cons: Extra HTTP requests, no type safety
+
+  Recommendation needed: Prefer simplicity (option A) or richer features (option B)?
+
+  ---
+  Which do you prefer for each?
+
+
+
