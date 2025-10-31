@@ -2,7 +2,9 @@
   <div class="contact">
     <section class="contact-header">
       <h1 class="contact-title">Get In Touch</h1>
-      <p class="contact-subtitle">Let's discuss your next project or opportunity</p>
+      <p class="contact-subtitle">
+        Let's discuss your next project or opportunity
+      </p>
     </section>
 
     <div class="contact-container">
@@ -43,7 +45,7 @@
           </div>
 
           <button type="submit" class="btn-submit" :disabled="isSubmitting">
-            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+            {{ isSubmitting ? "Sending..." : "Send Message" }}
           </button>
 
           <p v-if="submitStatus === 'success'" class="status-message success">
@@ -79,83 +81,77 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-import { Mail, Linkedin, Github, Twitter } from 'lucide-vue-next'
-import type { Component } from 'vue'
+import { ref, reactive } from "vue";
+import { Mail, Linkedin, Github } from "lucide-vue-next";
+import type { Component } from "vue";
 
 interface Contact {
-  type: string
-  value: string
-  link: string
-  icon: Component
+  type: string;
+  value: string;
+  link: string;
+  icon: Component;
 }
 
 const contacts = ref<Contact[]>([
   {
-    type: 'Email',
-    value: 'your.email@example.com',
-    link: 'mailto:your.email@example.com',
-    icon: Mail
+    type: "Email",
+    value: "gui.rebello1@gmail.com",
+    link: "mailto:gui.rebello1@gmail.com",
+    icon: Mail,
   },
   {
-    type: 'LinkedIn',
-    value: 'linkedin.com/in/yourprofile',
-    link: 'https://linkedin.com/in/yourprofile',
-    icon: Linkedin
+    type: "LinkedIn",
+    value: "linkedin.com/in/guirebello",
+    link: "https://linkedin.com/in/guirebello",
+    icon: Linkedin,
   },
   {
-    type: 'GitHub',
-    value: 'github.com/yourusername',
-    link: 'https://github.com/yourusername',
-    icon: Github
+    type: "GitHub",
+    value: "github.com/Guirebello",
+    link: "https://github.com/Guirebello",
+    icon: Github,
   },
-  {
-    type: 'Twitter',
-    value: '@yourhandle',
-    link: 'https://twitter.com/yourhandle',
-    icon: Twitter
-  }
-])
+]);
 
 const formData = reactive({
-  name: '',
-  email: '',
-  message: ''
-})
+  name: "",
+  email: "",
+  message: "",
+});
 
-const isSubmitting = ref(false)
-const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
+const isSubmitting = ref(false);
+const submitStatus = ref<"idle" | "success" | "error">("idle");
 
 const handleSubmit = async () => {
-  isSubmitting.value = true
-  submitStatus.value = 'idle'
+  isSubmitting.value = true;
+  submitStatus.value = "idle";
 
   try {
     // Simulate API call - replace with actual submission logic
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // For now, just show success message
     // In production, you would send this to your backend or email service
-    console.log('Form submitted:', formData)
+    console.log("Form submitted:", formData);
 
-    submitStatus.value = 'success'
+    submitStatus.value = "success";
 
     // Reset form
-    formData.name = ''
-    formData.email = ''
-    formData.message = ''
+    formData.name = "";
+    formData.email = "";
+    formData.message = "";
   } catch (error) {
-    console.error('Form submission error:', error)
-    submitStatus.value = 'error'
+    console.error("Form submission error:", error);
+    submitStatus.value = "error";
   } finally {
-    isSubmitting.value = false
+    isSubmitting.value = false;
 
     // Clear status message after 5 seconds
     setTimeout(() => {
-      submitStatus.value = 'idle'
-    }, 5000)
+      submitStatus.value = "idle";
+    }, 5000);
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -167,7 +163,11 @@ const handleSubmit = async () => {
 .contact-header {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   margin-bottom: 3rem;
 }
 

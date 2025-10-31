@@ -18,7 +18,11 @@
       <section class="section trajectory">
         <h2>Work Trajectory</h2>
         <div class="timeline">
-          <div class="timeline-item" v-for="(item, index) in workHistory" :key="index">
+          <div
+            class="timeline-item"
+            v-for="(item, index) in workHistory"
+            :key="index"
+          >
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <h3>{{ item.title }}</h3>
@@ -33,7 +37,13 @@
       <section class="section contact">
         <h2>Contact</h2>
         <div class="contact-grid">
-          <a v-for="contact in contacts" :key="contact.label" :href="contact.link" target="_blank" class="contact-card">
+          <a
+            v-for="contact in contacts"
+            :key="contact.label"
+            :href="contact.link"
+            target="_blank"
+            class="contact-card"
+          >
             <span class="icon">
               <component :is="contact.icon" :size="32" />
             </span>
@@ -46,43 +56,57 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Mail, Linkedin, Github, Twitter } from 'lucide-vue-next'
-import type { Component } from 'vue'
+import { ref } from "vue";
+import { Mail, Linkedin, Github } from "lucide-vue-next";
+import type { Component } from "vue";
 
 const skills = ref([
-  'JavaScript', 'TypeScript', 'Vue.js', 'React',
-  'Node.js', 'Python', 'Git', 'Docker',
-  'HTML/CSS', 'REST APIs', 'SQL', 'CI/CD'
-])
+  "JavaScript",
+  "TypeScript",
+  "Vue.js",
+  "Node.js",
+  "Python",
+  "Git",
+  "Docker",
+  "HTML/CSS",
+  "REST APIs",
+  "MongoDb",
+  "Bash",
+  "SQL",
+  "CI/CD",
+]);
 
 const workHistory = ref([
   {
-    title: 'Senior Developer',
-    company: 'Tech Company',
-    period: '2022 - Present',
-    description: 'Leading frontend development and mentoring junior developers.'
+    title: "Senior Developer",
+    company: "Tech Company",
+    period: "2022 - Present",
+    description:
+      "Leading frontend development and mentoring junior developers.",
   },
   {
-    title: 'Full Stack Developer',
-    company: 'Startup Inc',
-    period: '2020 - 2022',
-    description: 'Built scalable web applications using modern frameworks.'
+    title: "Full Stack Developer",
+    company: "Startup Inc",
+    period: "2020 - 2022",
+    description: "Built scalable web applications using modern frameworks.",
   },
   {
-    title: 'Junior Developer',
-    company: 'Digital Agency',
-    period: '2018 - 2020',
-    description: 'Developed client websites and internal tools.'
-  }
-])
+    title: "Junior Developer",
+    company: "Digital Agency",
+    period: "2018 - 2020",
+    description: "Developed client websites and internal tools.",
+  },
+]);
 
 const contacts = ref<Array<{ icon: Component; label: string; link: string }>>([
-  { icon: Mail, label: 'Email', link: 'mailto:your.email@example.com' },
-  { icon: Linkedin, label: 'LinkedIn', link: 'https://linkedin.com/in/yourprofile' },
-  { icon: Github, label: 'GitHub', link: 'https://github.com/yourusername' },
-  { icon: Twitter, label: 'Twitter', link: 'https://twitter.com/yourhandle' }
-])
+  { icon: Mail, label: "Email", link: "mailto:gui.rebello1@gmail.com" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    link: "https://linkedin.com/in/guirebello",
+  },
+  { icon: Github, label: "GitHub", link: "https://github.com/Guirebello" },
+]);
 </script>
 
 <style scoped lang="scss">
@@ -93,7 +117,11 @@ const contacts = ref<Array<{ icon: Component; label: string; link: string }>>([
 .about-header {
   padding: 4rem 2rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
 
   h1 {
     font-size: 3rem;
@@ -125,7 +153,7 @@ const contacts = ref<Array<{ icon: Component; label: string; link: string }>>([
     padding-bottom: 0.5rem;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 0;
@@ -166,7 +194,7 @@ const contacts = ref<Array<{ icon: Component; label: string; link: string }>>([
   padding-left: 2rem;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
