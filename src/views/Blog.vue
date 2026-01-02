@@ -24,6 +24,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { parseFrontmatter } from '../utils/frontmatterParser'
+import welcomeContent from '../posts/welcome.md?raw'
+import buildingWithVueContent from '../posts/building-with-vue.md?raw'
 
 interface Post {
   slug: string
@@ -35,15 +38,11 @@ interface Post {
 const posts = ref<Post[]>([
   {
     slug: 'welcome',
-    title: 'Welcome to My Blog',
-    date: '2024-01-15',
-    description: 'First post introducing the blog and what to expect.'
+    ...(parseFrontmatter(welcomeContent) as Omit<Post, 'slug'>)
   },
   {
     slug: 'building-with-vue',
-    title: 'Building Modern Apps with Vue 3',
-    date: '2024-02-01',
-    description: 'Exploring the power and simplicity of Vue 3 Composition API.'
+    ...(parseFrontmatter(buildingWithVueContent) as Omit<Post, 'slug'>)
   }
 ])
 </script>
